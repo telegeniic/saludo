@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.jmguajardo.saludo.models.requests.CreateSaludo;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,10 +23,15 @@ public class Saludo {
     @Column(name = "id")
     private Long id;
 
-    @Column(name="tipo")
+    @Column(name="tipo", unique=true)
     private Tipo tipo;
 
     @Column(name="saludo")
     private String saludo;
+
+    public Saludo(CreateSaludo createSaludo){
+        this.tipo = Tipo.valueOf(createSaludo.getTipo().toUpperCase());
+        this.saludo = createSaludo.getSaludo();
+    }
     
 }
