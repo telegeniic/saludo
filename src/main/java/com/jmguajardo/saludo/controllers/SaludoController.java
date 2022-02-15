@@ -20,13 +20,13 @@ public class SaludoController {
     @Autowired
     SaludoService saludoService;
 
-    @PostMapping("agregar_saludo")
+    @PostMapping("post/agregar_saludo")
     public SaludoResponse createSaludo(@RequestBody CreateSaludo cSaludo){
         Saludo saludo = saludoService.createSaludo(cSaludo);
         return new SaludoResponse(saludo);
     }
 
-    @GetMapping("{tipo}")
+    @GetMapping("get/{tipo}")
     public SaludoResponse getSaludoByTipo(@PathVariable String tipo){
         Saludo saludo = saludoService.findByTipo(tipo);
         return new SaludoResponse(saludo);
