@@ -1,5 +1,7 @@
 package com.jmguajardo.saludo.repositories;
 
+import java.util.Optional;
+
 import com.jmguajardo.saludo.models.entities.Saludo;
 import com.jmguajardo.saludo.models.entities.Tipo;
 
@@ -9,5 +11,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SaludoRepository extends JpaRepository<Saludo, Long>{
     
-    Saludo findByTipo(Tipo tipo);
+    Optional<Saludo> findByTipo(Tipo tipo);
 }
