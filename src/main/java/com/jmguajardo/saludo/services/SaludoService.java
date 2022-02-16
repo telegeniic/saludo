@@ -3,7 +3,7 @@ package com.jmguajardo.saludo.services;
 import java.util.List;
 
 import com.jmguajardo.saludo.exceptions.TipoAlreadyCreatedException;
-import com.jmguajardo.saludo.exceptions.TipoNotDefined;
+import com.jmguajardo.saludo.exceptions.TipoNotDefinedException;
 import com.jmguajardo.saludo.models.entities.Saludo;
 import com.jmguajardo.saludo.models.entities.Tipo;
 import com.jmguajardo.saludo.models.requests.CreateSaludo;
@@ -35,6 +35,6 @@ public class SaludoService {
 
     public Saludo findByTipo(String tipo){
         return saludoRepository.findByTipo(Tipo.valueOf(tipo.toUpperCase()))
-        .orElseThrow(() -> new TipoNotDefined());
+        .orElseThrow(() -> new TipoNotDefinedException());
     }
 }
